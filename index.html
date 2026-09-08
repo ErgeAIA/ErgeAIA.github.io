@@ -649,6 +649,24 @@
     color: var(--text-secondary);
   }
 
+  .vault-card {
+    display: block;
+    text-decoration: none;
+  }
+  .vault-go {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    border-bottom: 1px solid rgba(255, 179, 71, 0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s var(--transition), border-color 0.2s var(--transition);
+  }
+  .vault-card:hover .vault-go {
+    color: #fff;
+    border-color: var(--accent-primary);
+  }
   /* 联系方式 */
   #contact {
     background: var(--bg-secondary);
@@ -1026,47 +1044,31 @@
 <section id="vault" class="reveal">
   <div class="section-header">
     <h2 class="section-title">宝库</h2>
-    <p class="section-subtitle">Capability Vault 对外展示</p>
+        <p class="section-subtitle">把踩过的坑,沉淀成你能直接带走的能力 —— Capability Vault 由 AI Vault 一键交付</p>
   </div>
   <div class="vault-grid">
-    <div class="vault-card">
+    <a class="vault-card" href="https://github.com/ErgeAIA/ErgeAIA-skills" target="_blank" rel="noopener">
+      <div class="vault-icon">🧩</div>
+      <div class="vault-name">公开技能包</div>
+      <div class="vault-count">4 个已发布 Agent 技能</div>
+      <p class="vault-desc">skill-workshop、skill-reviewer、changelog-manager、zuiti——经过实战打磨的 AI 协作技能，一条命令装进任何 Agent。</p>
+      <span class="vault-go">去 GitHub 安装 ↗</span>
+    </a>
+    <a class="vault-card" href="https://ergeaia.github.io/aivault-site" target="_blank" rel="noopener">
       <div class="vault-icon">⚡</div>
-      <div class="vault-name">技能</div>
-      <div class="vault-count">36+ 个 erge-private 技能</div>
-      <p class="vault-desc">AI 协作技能的权威源,覆盖写作、研究、设计、开发全链路。</p>
-    </div>
-    <div class="vault-card">
-      <div class="vault-icon">📐</div>
-      <div class="vault-name">规则</div>
-      <div class="vault-count">三层规则体系</div>
-      <p class="vault-desc">全局 / 项目通用 / 项目专项,确保 AI 行为可控可预期。</p>
-    </div>
-    <div class="vault-card">
-      <div class="vault-icon">📄</div>
-      <div class="vault-name">文档</div>
-      <div class="vault-count">567+ 篇</div>
-      <p class="vault-desc">项目文档、教程、技术分析、深度研究报告。</p>
-    </div>
-    <div class="vault-card">
-      <div class="vault-icon">💡</div>
-      <div class="vault-name">提示词</div>
-      <div class="vault-count">15+ 个</div>
-      <p class="vault-desc">经过实战验证的 AI 提示词模板,即拿即用。</p>
-    </div>
-    <div class="vault-card">
-      <div class="vault-icon">🎨</div>
-      <div class="vault-name">ComfyUI 工作流</div>
-      <div class="vault-count">20+ 个</div>
-      <p class="vault-desc">AI 绘图工作流,从基础到进阶的可复用节点图。</p>
-    </div>
-    <div class="vault-card">
-      <div class="vault-icon">🔧</div>
-      <div class="vault-name">技术脚手架</div>
-      <div class="vault-count">34+ 个</div>
-      <p class="vault-desc">同步脚本、工具链、模板,加速项目启动。</p>
-    </div>
-  </div>
-</section>
+      <div class="vault-name">AI Vault 工作台</div>
+      <div class="vault-count">20+ 工作流 · 15+ 提示词 · MCP 连接</div>
+      <p class="vault-desc">Capability Vault 的资产在本地统一管理：ComfyUI 工作流、提示词、技能与模型供应商，一键分发到 36+ Agent。</p>
+      <span class="vault-go">访问官网 ↗</span>
+    </a>
+    <a class="vault-card" href="#contact">
+      <div class="vault-icon">📚</div>
+      <div class="vault-name">公众号专栏</div>
+      <div class="vault-count">2607 位读者</div>
+      <p class="vault-desc">教程、避坑实录、工具测评与深度长文——无门槛、无套路、无保留地连载,把文档与经验送到你的订阅里。</p>
+      <span class="vault-go">关注公众号 ↗</span>
+    </a>
+  </div></section>
 
 <section id="contact" class="reveal">
   <div class="section-header">

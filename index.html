@@ -712,10 +712,40 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-glow);
   }
-  .contact-icon {
-    font-size: 32px;
-    margin-bottom: 16px;
+  a.contact-card, button.contact-card {
+    display: block;
+    width: 100%;
+    text-align: inherit;
+    font: inherit;
+    cursor: pointer;
   }
+  .contact-card.cc-mail { --cc-brand: #EA4335; }
+  .contact-card.cc-wechat { --cc-brand: #07C160; }
+  .contact-card.cc-github { --cc-brand: #6B7280; }
+  .contact-card.cc-bilibili { --cc-brand: #FB7299; }
+  .contact-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--cc-brand) 14%, transparent);
+    transition: all 0.3s var(--transition);
+  }
+  .contact-ic svg {
+    width: 24px;
+    height: 24px;
+    color: var(--cc-brand);
+    transition: color 0.3s var(--transition);
+  }
+  .contact-card:hover .contact-ic {
+    background: var(--cc-brand);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--cc-brand) 45%, transparent);
+  }
+  .contact-card:hover .contact-ic svg { color: #fff; }
+  .contact-card .contact-label, .contact-card .contact-value { display: block; }
   .contact-label {
     font-size: 14px;
     color: var(--text-muted);
@@ -1084,25 +1114,25 @@
     <p class="section-subtitle">合作与交流</p>
   </div>
   <div class="contact-grid">
-    <a href="mailto:ergeaia@agent.qq.com" class="contact-card">
-      <div class="contact-icon">📧</div>
-      <div class="contact-label">邮箱</div>
-      <div class="contact-value">ergeaia@agent.qq.com</div>
+    <a class="contact-card cc-mail" href="mailto:ergeaia@agent.qq.com">
+      <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+      <span class="contact-label">邮箱</span>
+      <span class="contact-value">ergeaia@agent.qq.com</span>
     </a>
-    <a href="#contact" class="contact-card">
-      <div class="contact-icon">💬</div>
-      <div class="contact-label">微信</div>
-      <div class="contact-value">ErgeAIA_</div>
+    <button type="button" class="contact-card cc-wechat" id="contactWechat" title="点击复制微信 ErgeAIA_" aria-label="微信">
+      <span class="contact-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg></span>
+      <span class="contact-label">微信</span>
+      <span class="contact-value">ErgeAIA_</span>
+    </button>
+    <a class="contact-card cc-github" href="https://github.com/ErgeAIA" target="_blank" rel="noopener">
+      <span class="contact-ic"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/></svg></span>
+      <span class="contact-label">GitHub</span>
+      <span class="contact-value">github.com/ErgeAIA</span>
     </a>
-    <a href="https://github.com/ErgeAIA" target="_blank" rel="noopener" class="contact-card">
-      <div class="contact-icon">🐙</div>
-      <div class="contact-label">GitHub</div>
-      <div class="contact-value">github.com/ErgeAIA</div>
-    </a>
-    <a href="https://space.bilibili.com/67221461" target="_blank" rel="noopener" class="contact-card">
-      <div class="contact-icon">📺</div>
-      <div class="contact-label">B站</div>
-      <div class="contact-value">space.bilibili.com/67221461</div>
+    <a class="contact-card cc-bilibili" href="https://space.bilibili.com/67221461" target="_blank" rel="noopener">
+      <span class="contact-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg></span>
+      <span class="contact-label">B站</span>
+      <span class="contact-value">space.bilibili.com/67221461</span>
     </a>
   </div>
 </section>
@@ -1294,30 +1324,34 @@
 <!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、Space Grotesk + Noto Serif SC display 字体、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。 -->
 <script>
   (function () {
-    var btn = document.getElementById('wechatCopy');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var tip = btn.querySelector('.social-tip');
-      var fallback = function () {
-        var t = document.createElement('textarea');
-        t.value = 'ErgeAIA';
-        t.style.position = 'fixed';
-        t.style.opacity = '0';
-        document.body.appendChild(t);
-        t.select();
-        try { document.execCommand('copy'); done(); } catch (e) {}
-        document.body.removeChild(t);
-      };
-      var done = function () {
-        if (!tip) return;
-        tip.textContent = '已复制';
-        setTimeout(function () { tip.textContent = '公众号'; }, 1600);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('ErgeAIA').then(done, fallback);
-      } else { fallback(); }
-    });
+    function bindCopy(btn, id, tipSel, tipRestore) {
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var tip = btn.querySelector(tipSel);
+        var done = function () {
+          if (!tip) return;
+          tip.textContent = '已复制';
+          setTimeout(function () { tip.textContent = tipRestore; }, 1600);
+        };
+        var fallback = function () {
+          var t = document.createElement('textarea');
+          t.value = id;
+          t.style.position = 'fixed';
+          t.style.opacity = '0';
+          document.body.appendChild(t);
+          t.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(t);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(id).then(done, fallback);
+        } else { fallback(); }
+      });
+    }
+    bindCopy(document.getElementById('wechatCopy'), 'ErgeAIA', '.social-tip', '公众号');
+    bindCopy(document.getElementById('contactWechat'), 'ErgeAIA_', '.contact-value', 'ErgeAIA_');
   })();
 </script>
+</body>
 </body>
 </html>

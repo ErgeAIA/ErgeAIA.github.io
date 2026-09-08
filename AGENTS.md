@@ -4,7 +4,7 @@
 
 ## Permissions（权限边界）
 
-- **YOU MUST NOT 执行 `git push`**：本仓库 push 到 main 即部署上线 `https://ergeaia.github.io/`，须用户逐次确认。
+- **git push 无需逐次确认**：本仓库无发版概念，更新即上线，本地改动可完成提交后直接推送（用户 2026-09-08 豁免；**仅限本仓库**，其他仓库仍须逐次确认）。
 - **YOU MUST NOT 提交密钥、凭据、`.env`**。
 - index.html 中 `og:image` / `twitter:image` 指向的 `og-cover-1200x630.png` **尚未产出**（当前 404）：补图前不得删除该 meta 标签，补图时用 1200×630 尺寸放入仓库根目录。
 
@@ -19,7 +19,7 @@ GitHub Pages 用户主站（user site），服务于 `https://ergeaia.github.io/
 
 | 场景 | 命令（可复制原文） | 说明 |
 |---|---|---|
-| 部署 | `git push` | 即发布，需用户确认 |
+| 部署 | `git push` | 更新即上线，无需确认 |
 | 查看部署状态 | `gh api repos/ErgeAIA/ErgeAIA.github.io/pages --jq .status` | `building` / `built` |
 | 线上验证 | `curl -s -o /dev/null -w "%{http_code}" https://ergeaia.github.io/` | 期望 200 |
 

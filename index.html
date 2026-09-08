@@ -411,12 +411,7 @@
     margin-bottom: 20px;
     line-height: 1.8;
   }
-  .about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 32px;
-  }
+
   .tag {
     padding: 8px 16px;
     background: var(--bg-card);
@@ -427,6 +422,39 @@
     font-weight: 500;
   }
 
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .stat-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: all 0.3s var(--transition);
+  }
+  .stat-chip:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent-primary);
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
   /* 卡片网格(作品集/文章/宝库通用) */
   .card-grid {
     display: grid;
@@ -846,17 +874,22 @@
   <div class="about-content">
     <div class="about-avatar">二</div>
     <div class="about-text">
-      <h3>多面叙事,独立运营</h3>
-      <p>我是宝藏二哥AIA,一个在 AI 时代摸索前行的普通人。我不是程序员出身,却一头扎进了 AI 助手框架与技能体系的深海，从飞书生态迁移到 WorkBuddy,从内容创作跨界到桌面软件开发,从自媒体博主走到法律维权当事人。</p>
-      <p>我相信 AI 不该只是程序员的专属工具,它应该成为每个普通人手边的助手。这是我做自媒体、写文章、开发软件、构建能力宝库的出发点：把 AI 从天边拉到手边。</p>
-      <p>一人公司模式下,我同时是博主、作者、开发者、维权者。这个网站是我的多面叙事的汇总点,也是我与同行者相遇的地方。</p>
-      <div class="about-tags">
-        <span class="tag">AI 自媒体</span>
-        <span class="tag">ErgeMD 作者</span>
-        <span class="tag">内容创作</span>
-        <span class="tag">技能体系</span>
-        <span class="tag">一人公司</span>
-        <span class="tag">法律维权</span>
+      <h3>从普通人视角,把 AI 讲给普通人</h3>
+      <p>我是宝藏二哥AIA,一个在 AI 时代摸索前行的普通人——不是程序员出身,却把内容创作、桌面软件和 AI 技能体系都做了个遍。自媒体与开发的坑我都踩过,所以更知道怎么把它们讲成普通人听得懂、用得上的东西。</p>
+      <p>我相信 AI 不该只是程序员的专属工具。无门槛、无套路、无保留,把 AI 从天边拉到手边——这是我做内容、写软件、搭宝库的共同出发点。</p>
+      <div class="about-stats">
+        <a class="stat-chip" href="https://github.com/ErgeAIA" target="_blank" rel="noopener">
+          <span class="stat-num">55</span>
+          <span class="stat-label">GitHub 星标</span>
+        </a>
+        <a class="stat-chip" href="https://github.com/ErgeAIA/ErgeMD/releases" target="_blank" rel="noopener">
+          <span class="stat-num">878+</span>
+          <span class="stat-label">桌面软件下载</span>
+        </a>
+        <a class="stat-chip" href="https://space.bilibili.com/67221461" target="_blank" rel="noopener">
+          <span class="stat-num">165</span>
+          <span class="stat-label">B站关注者</span>
+        </a>
       </div>
     </div>
   </div>

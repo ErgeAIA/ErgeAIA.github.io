@@ -609,6 +609,22 @@
   }
 
   /* 宝库 */
+  a.article-item { text-decoration: none; color: inherit; }
+  a.article-item:hover h4 { color: var(--accent-primary); }
+  .articles-more {
+    margin-top: 28px;
+    text-align: center;
+  }
+  .articles-more a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 140, 66, 0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s var(--transition), border-color 0.2s var(--transition);
+  }
+  .articles-more a:hover { color: #fff; border-color: var(--accent-secondary); }
   .vault-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -987,59 +1003,51 @@
 <section id="articles" class="reveal">
   <div class="section-header">
     <h2 class="section-title">文章</h2>
-    <p class="section-subtitle">AI 内容 思考</p>
+        <p class="section-subtitle">公众号精选 —— 每篇都是踩坑换来的经验</p>
   </div>
   <div class="article-list">
-    <div class="article-item">
-      <div class="article-date"><span class="day">18</span><span class="month">07月</span></div>
+    <a class="article-item" href="https://mp.weixin.qq.com/s/iw4clAJmPqKBdU8JwCY-Ag" target="_blank" rel="noopener">
+      <div class="article-date"><span class="day">29</span><span class="month">08月</span></div>
       <div class="article-content">
-        <h4>文章标题占位:AI 时代的普通人如何找到自己的位置</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
+        <h4>DeepSeek V4 Flash 也能看图了？4 步给它装上眼睛</h4>
+        <p>纯文本模型强却不识图——modlens 用外挂视觉引擎给它们装上眼睛，粘贴即读、输出结构化证据。以 ZCode 为例手动装好，附贴图避坑指南。</p>
       </div>
       <div class="article-arrow">→</div>
-    </div>
-    <div class="article-item">
-      <div class="article-date"><span class="day">15</span><span class="month">07月</span></div>
+    </a>
+    <a class="article-item" href="https://mp.weixin.qq.com/s/rCq07X-8JxnQ8L35pGo0fg" target="_blank" rel="noopener">
+      <div class="article-date"><span class="day">26</span><span class="month">08月</span></div>
       <div class="article-content">
-        <h4>文章标题占位:从飞书到 WorkBuddy,我的 AI 助手迁移之路</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
+        <h4>AI 工具越用越乱？我把所有 Agent 的技能、规则、API Key 收进了一个本地 Vault</h4>
+        <p>技能越攒越多，越想不起来装过什么——资产多不是负担，乱才是。统一收进本地 Vault 后，一切有迹可循。</p>
       </div>
       <div class="article-arrow">→</div>
-    </div>
-    <div class="article-item">
-      <div class="article-date"><span class="day">12</span><span class="month">07月</span></div>
+    </a>
+    <a class="article-item" href="https://mp.weixin.qq.com/s/McjbBAQGc5Mpcn_zRzqKLQ" target="_blank" rel="noopener">
+      <div class="article-date"><span class="day">09</span><span class="month">08月</span></div>
       <div class="article-content">
-        <h4>文章标题占位:一人公司的多面叙事：我是如何同时做四件事的</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
+        <h4>AI 行话大全：15 个高频概念，用我姥都能听懂的话讲清楚</h4>
+        <p>把模型、Agent、MCP 等 15 个高频概念拆成人话——以「AI 是你团队新来的同事」为主线，存下就是一本可随时翻的说明书。</p>
       </div>
       <div class="article-arrow">→</div>
-    </div>
-    <div class="article-item">
-      <div class="article-date"><span class="day">08</span><span class="month">07月</span></div>
+    </a>
+    <a class="article-item" href="https://mp.weixin.qq.com/s/UyYKLr_9IihqG9XxTwEArA" target="_blank" rel="noopener">
+      <div class="article-date"><span class="day">02</span><span class="month">08月</span></div>
       <div class="article-content">
-        <h4>文章标题占位:技能体系构建：Capability Vault 的设计哲学</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
+        <h4>Trae 把成本算到了你心里——从永久免费到积分制，这账迟早要结</h4>
+        <p>梳理四种收费模式与限流逻辑，用模型 API 单价与多轮 token 的放大效应，算清厂商为何绕不开收费这道坎。</p>
       </div>
       <div class="article-arrow">→</div>
-    </div>
-    <div class="article-item">
-      <div class="article-date"><span class="day">03</span><span class="month">07月</span></div>
+    </a>
+    <a class="article-item" href="https://mp.weixin.qq.com/s/ttwYIB7DzwbyPHQm2Snqrg" target="_blank" rel="noopener">
+      <div class="article-date"><span class="day">12</span><span class="month">04月</span></div>
       <div class="article-content">
-        <h4>文章标题占位:ErgeMD 开发日志：Tauri 2 + Rust 的踩坑实录</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
+        <h4>AI 工具越用越乱？我用 Trae IDE + SOLO MTC 7 天搭了一个 AI 第二大脑</h4>
+        <p>Karpathy 用 LLM 搭知识库火了全网——早在 3 月底，我就动手搭起了自己的 AI 能力宝库，把散落的工具收进同一个大脑。</p>
       </div>
       <div class="article-arrow">→</div>
-    </div>
-    <div class="article-item">
-      <div class="article-date"><span class="day">28</span><span class="month">06月</span></div>
-      <div class="article-content">
-        <h4>文章标题占位:法律维权不是终点,是普通人尊严的起点</h4>
-        <p>这里是文章摘要,用两三句话概括文章的核心观点与价值。待替换为真实文章。</p>
-      </div>
-      <div class="article-arrow">→</div>
-    </div>
+    </a>
   </div>
-</section>
+  <p class="articles-more"><a href="#contact">更多文章持续更新中,关注公众号不错过 →</a></p></section>
 
 <section id="vault" class="reveal">
   <div class="section-header">

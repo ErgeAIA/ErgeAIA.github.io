@@ -504,6 +504,16 @@
     margin: 48px 0 20px;
   }
   .works-group:first-of-type { margin-top: 0; }
+  .card-feature { grid-column: 1 / -1; }
+  .card-feature .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .card-feature .card-desc { max-width: 640px; margin-bottom: 0; }
+  .card-feature .card-meta { margin-bottom: 0; }
   .card-links {
     display: flex;
     flex-wrap: wrap;
@@ -884,7 +894,7 @@
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/catapult-cn" target="_blank" rel="noopener">GitHub ↗</a><a class="card-link" href="https://github.com/ErgeAIA/catapult-cn/releases" target="_blank" rel="noopener">下载 ↗</a></div>
       </div>
     </div>
-    <div class="card">
+    <div class="card card-feature">
       <div class="card-body">
         <h3 class="card-title">AI Vault</h3>
         <p class="card-desc">本地优先的 AI 创作者工作台：统一管理技能、提示词、MCP、ComfyUI 工作流，一键分发到 36+ Agent。</p>

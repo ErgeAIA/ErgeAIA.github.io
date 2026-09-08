@@ -372,31 +372,13 @@
     align-items: start;
   }
   .about-avatar {
+    display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 1;
+    object-fit: cover;
     border-radius: 24px;
-    background: var(--gradient-warm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    font-weight: 900;
-    color: var(--bg-primary);
     box-shadow: var(--shadow-glow);
-    position: relative;
-    --ph-size: '512 × 512';
-    --ph-ratio: '1:1';
-  }
-  .about-avatar::after {
-    content: '建议 ' var(--ph-size) ' (' var(--ph-ratio) ')';
-    position: absolute;
-    left: 0; right: 0; bottom: 12px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--bg-primary);
-    opacity: 0.82;
-    letter-spacing: 0.04em;
   }
   .about-text h3 {
     font-size: 32px;
@@ -935,7 +917,7 @@
     <p class="section-subtitle">一个普通人,与 AI 同行</p>
   </div>
   <div class="about-content">
-    <div class="about-avatar">二</div>
+    <img class="about-avatar" src="avatar.jpg" alt="宝藏二哥AIA 头像" width="512" height="512" loading="lazy">
     <div class="about-text">
       <h3>从普通人视角,把 AI 讲给普通人</h3>
       <p>我是宝藏二哥AIA,一个在 AI 时代摸索前行的普通人——不是程序员出身,却把内容创作、桌面软件和 AI 技能体系都做了个遍。自媒体与开发的坑我都踩过,所以更知道怎么把它们讲成普通人听得懂、用得上的东西。</p>

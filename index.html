@@ -34,7 +34,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-primary: #1A0F0A;
@@ -52,8 +52,10 @@
     --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
     --shadow-glow: 0 0 40px rgba(255, 179, 71, 0.15);
     --transition: cubic-bezier(0.16, 1, 0.3, 1);
-    --font-display: 'Space Grotesk', 'Noto Serif SC', serif;
+    --font-display: 'DM Serif Display', 'Noto Serif SC', 'Iowan Old Style', Georgia, serif;
     /* Radii scale (Shape Consistency Lock): tag 8 / btn 12 / article 14 / card 16 / product 20 / avatar 24 / pill 999 */
+    /* Display weight lock: DM Serif Display 仅有 400 原生字重——凡混排拉丁的 display 元素（hero/nav/footer 品牌、stat-num）
+       用 400 原生字面，禁 synthetic bold；纯中文 display（section-title 900 / works-group 700）保持宋体重字。 */
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -90,7 +92,7 @@
   .nav-brand {
     font-family: var(--font-display);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--accent-primary);
     letter-spacing: -0.02em;
   }
@@ -213,8 +215,8 @@
   .hero-brand {
     font-family: var(--font-display);
     font-size: clamp(46px, 8.5vw, 108px);
-    font-weight: 900;
-    letter-spacing: -0.04em;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     line-height: 1.05;
     margin-bottom: 24px;
     background: var(--gradient-warm);
@@ -429,7 +431,7 @@
   .stat-num {
     font-family: var(--font-display);
     font-size: 26px;
-    font-weight: 900;
+    font-weight: 400;
     color: var(--accent-primary);
     line-height: 1.2;
   }
@@ -774,7 +776,7 @@
   .footer-brand h3 {
     font-family: var(--font-display);
     font-size: 28px;
-    font-weight: 900;
+    font-weight: 400;
     margin-bottom: 12px;
     background: var(--gradient-warm);
     -webkit-background-clip: text;
@@ -1303,7 +1305,7 @@
   })();
 </script>
 
-<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、Space Grotesk + Noto Serif SC display 字体、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。 -->
+<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。 -->
 <script>
   (function () {
     function bindCopy(btn, id, tipSel, tipRestore) {

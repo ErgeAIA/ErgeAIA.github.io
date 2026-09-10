@@ -34,8 +34,19 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- display 字体不依赖 Google：DM Serif Display 本地自托管（与 aivault-site 同源同字），霞鹜文楷切片走 npmmirror（国内可达） -->
+<link rel="preload" href="dm-serif-display-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="lxgw-wenkai-regular.css">
+<link rel="stylesheet" href="lxgw-wenkai-bold.css">
 <style>
+  @font-face {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('dm-serif-display-400-latin.woff2') format('woff2');
+  }
   :root {
     --bg-primary: #1A0F0A;
     --bg-secondary: #2A1810;
@@ -52,10 +63,10 @@
     --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
     --shadow-glow: 0 0 40px rgba(255, 179, 71, 0.15);
     --transition: cubic-bezier(0.16, 1, 0.3, 1);
-    --font-display: 'DM Serif Display', 'Noto Serif SC', 'Iowan Old Style', Georgia, serif;
+    --font-display: 'DM Serif Display', 'LXGW WenKai', 'Songti SC', SimSun, serif;
     /* Radii scale (Shape Consistency Lock): tag 8 / btn 12 / article 14 / card 16 / product 20 / avatar 24 / pill 999 */
-    /* Display weight lock: DM Serif Display 仅有 400 原生字重——凡混排拉丁的 display 元素（hero/nav/footer 品牌、stat-num）
-       用 400 原生字面，禁 synthetic bold；纯中文 display（section-title 900 / works-group 700）保持宋体重字。 */
+    /* Display weight lock（与 aivault-site 同规）：混排拉丁的 display 元素（hero/nav/footer 品牌、stat-num）锁 400，
+       避免 DM Serif Display（仅 400 原生）与文楷被浏览器合成假粗体；纯中文 display（section-title 700 / works-group 700）用文楷 Bold。 */
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,7 +74,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system, 'Segoe UI', sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -151,7 +162,7 @@
   .section-title {
     font-family: var(--font-display);
     font-size: 48px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 16px;
     color: var(--accent-primary);
@@ -1323,7 +1334,7 @@
   })();
 </script>
 
-<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。 -->
+<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。Step 8 字体系统对齐 aivault-site：用户判定宋体方案平庸、文楷搭配满意，display 中文从 Noto Serif SC 换为 LXGW WenKai 霞鹜文楷（--font-display 与 aivault-site 同栈），section-title 900→700（文楷 Bold 上限）；Noto Serif SC 移出加载。工程配套：DM Serif Display 改本地自托管 woff2（24KB，与 aivault-site 同文件，OFL），文楷切片 CSS 内置仓库、woff2 走 npmmirror（国内可达，实测较 jsdelivr 快 10 倍），Google Fonts 仅余 JetBrains Mono 与 Noto Sans SC；body 栈补 PingFang SC/Microsoft YaHei。 -->
 <script>
   (function () {
     function bindCopy(btn, id, tipSel, tipRestore) {

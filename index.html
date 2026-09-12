@@ -876,6 +876,7 @@
     .hero-slogan { font-size: 22px; }
     .about-content { grid-template-columns: 1fr; gap: 32px; }
     .card-grid, .vault-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-container { grid-template-columns: 1fr; gap: 32px; }
     .article-item { grid-template-columns: 60px 1fr; }
@@ -955,17 +956,17 @@
       <p>我是宝藏二哥AIA,一个在 AI 时代摸索前行的普通人——不是程序员出身,却把内容创作、桌面软件和 AI 技能体系都做了个遍。自媒体与开发的坑我都踩过,所以更知道怎么把它们讲成普通人听得懂、用得上的东西。</p>
       <p>我相信 AI 不该只是程序员的专属工具。无门槛、无套路、无保留,把 AI 从天边拉到手边——这是我做内容、写软件、搭宝库的共同出发点。</p>
       <div class="about-stats">
-        <a class="stat-chip" href="#contact">
-          <span class="stat-num">2607</span>
-          <span class="stat-label">公众号关注者</span>
+        <a class="stat-chip" href="https://ergeaia.github.io/aivault-site" target="_blank" rel="noopener">
+          <span class="stat-num">AI Vault</span>
+          <span class="stat-label">AI 创作者工作台 ↗</span>
         </a>
-        <a class="stat-chip" href="https://github.com/ErgeAIA/ErgeMD/releases" target="_blank" rel="noopener">
-          <span class="stat-num">878+</span>
-          <span class="stat-label">桌面软件下载</span>
+        <a class="stat-chip" href="https://ergeaia.github.io/xieyi/" target="_blank" rel="noopener">
+          <span class="stat-num">写意 Xieyi</span>
+          <span class="stat-label">Vibe Coding 指南 ↗</span>
         </a>
-        <a class="stat-chip" href="https://github.com/ErgeAIA" target="_blank" rel="noopener">
-          <span class="stat-num">7</span>
-          <span class="stat-label">开源项目</span>
+        <a class="stat-chip" href="https://github.com/ErgeAIA/ErgeMD" target="_blank" rel="noopener">
+          <span class="stat-num">ErgeMD</span>
+          <span class="stat-label">Markdown 阅读器 ↗</span>
         </a>
       </div>
     </div>
@@ -1116,7 +1117,7 @@
     <a class="vault-card" href="#contact">
       <div class="vault-icon">📚</div>
       <div class="vault-name">公众号专栏</div>
-      <div class="vault-count">2607 位读者</div>
+      <div class="vault-count">2600+ 位读者</div>
       <p class="vault-desc">教程、避坑实录、工具测评与深度长文——无门槛、无套路、无保留地连载,把文档与经验送到你的订阅里。</p>
       <span class="vault-go">关注公众号 ↗</span>
     </a>
@@ -1335,7 +1336,7 @@
   })();
 </script>
 
-<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。Step 8 字体系统对齐 aivault-site：用户判定宋体方案平庸、文楷搭配满意，display 中文从 Noto Serif SC 换为 LXGW WenKai 霞鹜文楷（--font-display 与 aivault-site 同栈），section-title 900→700（文楷 Bold 上限）；Noto Serif SC 移出加载。工程配套：DM Serif Display 改本地自托管 woff2（24KB，与 aivault-site 同文件，OFL），文楷切片 CSS 内置仓库、woff2 走 npmmirror（国内可达，实测较 jsdelivr 快 10 倍），Google Fonts 仅余 JetBrains Mono 与 Noto Sans SC；body 栈补 PingFang SC/Microsoft YaHei。 -->
+<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。Step 8 字体系统对齐 aivault-site：用户判定宋体方案平庸、文楷搭配满意，display 中文从 Noto Serif SC 换为 LXGW WenKai 霞鹜文楷（--font-display 与 aivault-site 同栈），section-title 900→700（文楷 Bold 上限）；Noto Serif SC 移出加载。工程配套：DM Serif Display 改本地自托管 woff2（24KB，与 aivault-site 同文件，OFL），文楷切片 CSS 内置仓库、woff2 走 npmmirror（国内可达，实测较 jsdelivr 快 10 倍），Google Fonts 仅余 JetBrains Mono 与 Noto Sans SC；body 栈补 PingFang SC/Microsoft YaHei。Step 9 关于我数据卡改项目入口卡（复用 stat-chip 样式）：原 2607/878+/7 三张数字卡因数字过小构成逆向社会证明、且"878+ 桌面软件下载"与 ErgeMD 实际下载（GitHub API 511）失真，改为 AI Vault / 写意 Xieyi / ErgeMD 三张轻摘要入口卡（名称 + 一句话 + 外链）；宝库区"2607 位读者"同步模糊为"2600+ 位读者"；手写数字口径登记至本仓库 AGENTS.md 反直觉约定第 4 条。 -->
 <script>
   (function () {
     function bindCopy(btn, id, tipSel, tipRestore) {

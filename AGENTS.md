@@ -28,6 +28,7 @@ GitHub Pages 用户主站（user site），服务于 `https://ergeaia.github.io/
 1. **index.html 的源头**：`D:\Workspace\Capability Vault\outputs\宝藏二哥AIA-个人网站-原型-variant2.html`（原型目录只读参考）；上线版本以本仓库为权威，改动落在本仓库。
 2. **与 profile 主页无关**：special 仓库 `ErgeAIA/ErgeAIA` 渲染 GitHub 个人主页 README，与本站互不影响，不要在其中找本站内容。
 3. **路线乙预留**：未来博客模块 Astro 化后，本文件"项目性质/命令表"MUST 同步更新（新增构建命令与 Actions）。
+4. **页面手写数字的口径**：index.html 无构建系统，数字为手写静态值（不像 profile 主页有 shields.io 实时查询），MUST 在本条登记口径与更新时间，改动数字时同步更新本条。2026-09-12 口径：宝库区"2600+ 位读者" = 公众号后台 2607 取整模糊化；"46+ 预设 Agent""4 个已发布 Agent 技能"来自 AI Vault 当前版本能力。前车之鉴：关于我区块曾手写"878+ 桌面软件下载"，与 ErgeMD 实际总下载（GitHub API 实测 511）严重失真，2026-09-12 已随数据卡改版移除——新增人气/下载类数字前先确认其经得起实时核对，宁可不展示。
 
 ## 自维护协议
 

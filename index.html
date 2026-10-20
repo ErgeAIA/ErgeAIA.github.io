@@ -343,13 +343,18 @@
     border-radius: 4px;
     font-size: 10px;
     line-height: 1.4;
-    color: #fff;
-    background: var(--brand);
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
     white-space: nowrap;
     pointer-events: none;
     transition: transform 0.2s ease-out;
   }
   .social-btn:hover .social-tip { transform: translateX(-50%) scale(1); }
+  /* 触屏无 hover：四枚圆圈必须自带可见标签，否则只剩四个同色圆点 */
+  @media (hover: none) {
+    .social-tip { transform: translateX(-50%) scale(1); }
+  }
 
   /* Hero 排版入场：逐行上浮淡入（尊重 prefers-reduced-motion） */
   .hero-inner > * {
@@ -457,40 +462,26 @@
     gap: 28px;
   }
   .card {
+    position: relative;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.4s var(--transition);
-    cursor: pointer;
   }
   .card:hover {
     transform: translateY(-6px);
     border-color: var(--accent-primary);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--accent-primary);
   }
-  .card-cover {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    --ph-size: '1280 × 720';
-    --ph-ratio: '16:9';
+  .card:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 2px var(--accent-primary);
   }
-  .card-cover::after {
-    content: '封面待上传\A 建议 ' var(--ph-size) ' (' var(--ph-ratio) ')';
-    white-space: pre;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.7;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-  }
+  /* 整卡可达：标题主链接的 ::after 铺满卡片，次级链接靠更高 z-index 浮在覆盖层之上 */
+  .card-title a { color: inherit; text-decoration: none; }
+  .card-title a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .card-links { position: relative; z-index: 2; }
   .card-body {
     padding: 24px;
   }
@@ -515,16 +506,16 @@
     font-size: 12px;
     padding: 4px 10px;
   }
-  .card-title .deprecated-note {
+  .deprecated-note {
     display: inline-block;
+    align-self: flex-start;
     font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
     border: 1px solid var(--border);
     border-radius: 999px;
-    padding: 3px 10px;
-    margin-left: 10px;
-    vertical-align: 3px;
+    padding: 5px 12px;
+    margin: -4px 0 12px;
     white-space: nowrap;
   }
   .deprecated-note a {
@@ -567,7 +558,9 @@
     color: var(--accent-primary);
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 179, 71, 0.35);
-    padding-bottom: 2px;
+    display: inline-block;
+    padding: 6px 6px 3px;
+    margin: -6px -6px -3px;
     transition: border-color 0.2s var(--transition), color 0.2s var(--transition);
   }
   .card-link:hover { color: #fff; border-color: var(--accent-primary); }
@@ -771,6 +764,60 @@
     word-break: break-all;
   }
 
+  /* 关注公众号：本站唯一主行动，独立成块，不塞进四宫格里跟邮箱平级 */
+  .follow-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .follow-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin-bottom: 10px;
+  }
+  .follow-how {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 56ch;
+  }
+  .follow-id-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .follow-id {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+  }
+  .follow-copy-btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: background 0.25s var(--transition), color 0.25s var(--transition), border-color 0.25s var(--transition);
+  }
+  .follow-copy-btn:hover { background: var(--accent-primary); color: var(--bg-primary); border-color: var(--accent-primary); }
+  .follow-note { font-size: 13px; line-height: 1.8; color: var(--text-secondary); margin-top: 12px; }
+  .follow-note strong { color: var(--text-primary); font-weight: 600; }
+
   /* 深空 variant 2：区块星云背景（仅在 #about / #contact 叠加暖色星云层，比 variant 1 全页均匀星海带更具场景感） */
   #about, #contact { position: relative; }
   #about::before, #contact::before {
@@ -780,8 +827,8 @@
     z-index: 0;
     pointer-events: none;
     background:
-      radial-gradient(48% 58% at 16% 32%, rgba(255,140,66,0.20) 0%, rgba(255,140,66,0) 60%),
-      radial-gradient(42% 52% at 84% 68%, rgba(255,179,71,0.16) 0%, rgba(255,179,71,0) 62%),
+      radial-gradient(48% 58% at 16% 32%, rgba(255,140,66,0.11) 0%, rgba(255,140,66,0) 60%),
+      radial-gradient(42% 52% at 84% 68%, rgba(255,179,71,0.09) 0%, rgba(255,179,71,0) 62%),
       radial-gradient(80% 90% at 50% 122%, rgba(92,58,40,0.34) 0%, rgba(92,58,40,0) 72%);
   }
   #about > *, #contact > * { position: relative; z-index: 1; }
@@ -875,6 +922,7 @@
     .hero-brand { font-size: 56px; }
     .hero-slogan { font-size: 22px; }
     .about-content { grid-template-columns: 1fr; gap: 32px; }
+    .follow-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
     .card-grid, .vault-grid { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -983,32 +1031,33 @@
   <div class="card-grid">
     <div class="card card-feature">
       <div class="card-body">
-        <h3 class="card-title">AI Vault</h3>
-        <p class="card-desc">本地优先的 AI 创作者工作台：统一管理技能、提示词、MCP、ComfyUI 工作流，一键分发到 46+ 预设 Agent，支持自定义扩展。</p>
+        <h3 class="card-title"><a href="https://ergeaia.github.io/aivault-site" target="_blank" rel="noopener">AI Vault</a></h3>
+        <p class="card-desc">把散在各处的 AI 工具资料收进一个本地库：技能、提示词、工作流一次整理好，再一键送进 46+ 个 AI 编程工具，不用一个个手动复制，也能加自己的。</p>
         <div class="card-meta"><span class="tag">本地优先</span><span class="tag">资源管理</span><span class="tag">一键分发</span></div>
         <div class="card-links"><a class="card-link" href="https://ergeaia.github.io/aivault-site" target="_blank" rel="noopener">访问官网 ↗</a><a class="card-link" href="https://github.com/ErgeAIA/updates-dist/releases" target="_blank" rel="noopener">下载 ↗</a></div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">ErgeMD</h3>
-        <p class="card-desc">为阅读而生的 Markdown 桌面阅读器：极致的渲染美感 + 丝滑的阅读体验 + Mermaid 图表兼容。</p>
+        <h3 class="card-title"><a href="https://github.com/ErgeAIA/ErgeMD" target="_blank" rel="noopener">ErgeMD</a></h3>
+        <p class="card-desc">一打开就能安静读完的 Markdown 阅读器：排版好看、翻页顺手，文里的流程图直接画出来。</p>
         <div class="card-meta"><span class="tag">Tauri 2</span><span class="tag">React 19</span><span class="tag">Rust</span></div>
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/ErgeMD" target="_blank" rel="noopener">GitHub ↗</a><a class="card-link" href="https://github.com/ErgeAIA/ErgeMD/releases" target="_blank" rel="noopener">下载 ↗</a></div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">ErgeHash</h3>
-        <p class="card-desc">跨平台文件哈希校验工具：本地优先、零上传、极速批量校验，Windows / macOS / Linux。</p>
+        <h3 class="card-title"><a href="https://github.com/ErgeAIA/ErgeHash" target="_blank" rel="noopener">ErgeHash</a></h3>
+        <p class="card-desc">下载完一个文件，用它比对文件指纹，就知道有没有被改过或下坏。可以一次拖进几十个，全程不上传。</p>
         <div class="card-meta"><span class="tag">Tauri 2</span><span class="tag">Rust</span><span class="tag">React</span></div>
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/ErgeHash" target="_blank" rel="noopener">GitHub ↗</a><a class="card-link" href="https://github.com/ErgeAIA/ErgeHash/releases" target="_blank" rel="noopener">下载 ↗</a></div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">catapult-cn<span class="deprecated-note">不再维护，请使用 <a href="https://ergeaia.github.io/aivault-site/" target="_blank" rel="noopener">AI Vault</a></span></h3>
-        <p class="card-desc">llama.cpp 桌面启动器中文版：无需命令行，从零开始本地大模型对话、更新与管理。</p>
+        <h3 class="card-title"><a href="https://github.com/ErgeAIA/catapult-cn" target="_blank" rel="noopener">catapult-cn</a></h3>
+        <p class="deprecated-note">不再维护，请使用 <a href="https://ergeaia.github.io/aivault-site/" target="_blank" rel="noopener">AI Vault</a></p>
+        <p class="card-desc">不用敲命令，在自己电脑上跑起一个 AI 模型跟它聊天，顺手也能管理模型的更新。</p>
         <div class="card-meta"><span class="tag">Tauri</span><span class="tag">llama.cpp</span><span class="tag">中文版</span></div>
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/catapult-cn" target="_blank" rel="noopener">GitHub ↗</a><a class="card-link" href="https://github.com/ErgeAIA/catapult-cn/releases" target="_blank" rel="noopener">下载 ↗</a></div>
       </div>
@@ -1020,24 +1069,24 @@
   <div class="card-grid">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">ErgeAIA-skills</h3>
-        <p class="card-desc">精选 Agent Skills 合集：结构化评审、合规校验等，一条命令装进任何 Agent。</p>
+        <h3 class="card-title"><a href="https://github.com/ErgeAIA/ErgeAIA-skills" target="_blank" rel="noopener">ErgeAIA-skills</a></h3>
+        <p class="card-desc">一组现成的 AI 助手技能（写作、评审、排版这些），一条命令装进你正在用的工具，不用自己从零配置。</p>
         <div class="card-meta"><span class="tag">Agent Skills</span><span class="tag">一键安装</span></div>
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/ErgeAIA-skills" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">写意 Xieyi</h3>
-        <p class="card-desc">Vibe Coding 指南站点：把「专注产品设计、把实现交给 AI」落地为可浏览的组件库 + 概念库。</p>
+        <h3 class="card-title"><a href="https://ergeaia.github.io/xieyi/" target="_blank" rel="noopener">写意 Xieyi</a></h3>
+        <p class="card-desc">只说清想要什么、把写代码交给 AI 的做法指南：有能照着改的界面组件，也有把术语讲明白的概念页。</p>
         <div class="card-meta"><span class="tag">指南站点</span><span class="tag">组件库</span><span class="tag">概念库</span></div>
         <div class="card-links"><a class="card-link" href="https://ergeaia.github.io/xieyi/" target="_blank" rel="noopener">访问站点 ↗</a><a class="card-link" href="https://github.com/ErgeAIA/xieyi" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">claude-code-bootstrap</h3>
-        <p class="card-desc">一键拉起 Claude Code 工作环境（Windows PowerShell）：依赖检测 + 三级兜底安装 + hooks 部署。</p>
+        <h3 class="card-title"><a href="https://github.com/ErgeAIA/claude-code-bootstrap" target="_blank" rel="noopener">claude-code-bootstrap</a></h3>
+        <p class="card-desc">在 Windows 上一条命令装好 Claude Code：缺什么它自己检查，装不上会自动换路子，不用手动配环境。</p>
         <div class="card-meta"><span class="tag">PowerShell</span><span class="tag">Claude Code</span></div>
         <div class="card-links"><a class="card-link" href="https://github.com/ErgeAIA/claude-code-bootstrap" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
@@ -1092,7 +1141,7 @@
       <div class="article-arrow">→</div>
     </a>
   </div>
-  <p class="articles-more"><a href="#contact">更多文章持续更新中,关注公众号不错过 →</a></p></section>
+  <p class="articles-more"><a href="#contact">更多文章持续更新中，关注公众号不错过 →</a></p></section>
 
 <section id="vault" class="reveal">
   <div class="section-header">
@@ -1128,15 +1177,29 @@
     <h2 class="section-title">联系方式</h2>
     <p class="section-subtitle">合作与交流</p>
   </div>
+  <div class="follow-card">
+    <div>
+      <h3 class="follow-title">关注公众号 宝藏二哥AIA</h3>
+      <p class="follow-how">文章、教程和新软件都在公众号发。打开微信，点右上角搜索，输入下面这个号，点关注。</p>
+      <div class="follow-id-row">
+        <span class="follow-id">ErgeAIA</span>
+        <button type="button" class="follow-copy-btn" id="followCopy" aria-label="复制公众号 ID ErgeAIA"><span>复制这个号</span></button>
+      </div>
+      <p class="follow-note">别和下面四宫格里的 <strong>个人微信 ErgeAIA_</strong> 弄混，那个多一个下划线，只用于合作。</p>
+    </div>
+    <!-- TODO(user): 公众号二维码。把 200x200 的 wechat-qr.png 放进仓库根目录后，用下面这行替换本注释
+         <img class="follow-qr" src="wechat-qr.png" alt="微信扫一扫，关注公众号 宝藏二哥AIA" width="200" height="200"
+              style="border-radius:12px;border:1px solid var(--border);background:#fff;padding:8px"> -->
+  </div>
   <div class="contact-grid">
     <a class="contact-card cc-mail" href="mailto:ergeaia@agent.qq.com">
       <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
       <span class="contact-label">邮箱</span>
       <span class="contact-value">ergeaia@agent.qq.com</span>
     </a>
-    <button type="button" class="contact-card cc-wechat" id="contactWechat" title="点击复制微信 ErgeAIA_" aria-label="微信">
+    <button type="button" class="contact-card cc-wechat" id="contactWechat" title="点击复制个人微信 ErgeAIA_" aria-label="复制个人微信号 ErgeAIA_">
       <span class="contact-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg></span>
-      <span class="contact-label">微信</span>
+      <span class="contact-label">个人微信（仅合作）</span>
       <span class="contact-value">ErgeAIA_</span>
     </button>
     <a class="contact-card cc-github" href="https://github.com/ErgeAIA" target="_blank" rel="noopener">
@@ -1174,7 +1237,7 @@
         <li><a href="https://space.bilibili.com/67221461" target="_blank" rel="noopener">B站</a></li>
         <li><a href="https://github.com/ErgeAIA" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="mailto:ergeaia@agent.qq.com">邮箱</a></li>
-        <li>微信:ErgeAIA_</li>
+        <li>个人微信：ErgeAIA_</li>
       </ul>
     </div>
   </div>
@@ -1343,10 +1406,16 @@
       if (!btn) return;
       btn.addEventListener('click', function () {
         var tip = btn.querySelector(tipSel);
+        var restore = function (text) { setTimeout(function () { tip.textContent = text; }, 1600); };
         var done = function () {
           if (!tip) return;
           tip.textContent = '已复制';
-          setTimeout(function () { tip.textContent = tipRestore; }, 1600);
+          restore(tipRestore);
+        };
+        var failed = function () {
+          if (!tip) return;
+          tip.textContent = '复制失败，请手动输入';
+          restore(tipRestore);
         };
         var fallback = function () {
           var t = document.createElement('textarea');
@@ -1355,16 +1424,17 @@
           t.style.opacity = '0';
           document.body.appendChild(t);
           t.select();
-          try { document.execCommand('copy'); done(); } catch (e) {}
+          try { document.execCommand('copy'); done(); } catch (e) { failed(); }
           document.body.removeChild(t);
         };
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(id).then(done, fallback);
+          navigator.clipboard.writeText(id).then(done, function () { fallback(); });
         } else { fallback(); }
       });
     }
     bindCopy(document.getElementById('wechatCopy'), 'ErgeAIA', '.social-tip', '公众号');
     bindCopy(document.getElementById('contactWechat'), 'ErgeAIA_', '.contact-value', 'ErgeAIA_');
+    bindCopy(document.getElementById('followCopy'), 'ErgeAIA', 'span', '复制这个号');
   })();
 </script>
 </body>

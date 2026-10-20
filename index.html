@@ -46,19 +46,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<!-- display 字体不依赖 Google：DM Serif Display 本地自托管（与 aivault-site 同源同字），霞鹜文楷切片走 npmmirror（国内可达） -->
-<link rel="preload" href="dm-serif-display-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="lxgw-wenkai-regular.css">
-<link rel="stylesheet" href="lxgw-wenkai-bold.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preload" href="space-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face {
-    font-family: 'DM Serif Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('dm-serif-display-400-latin.woff2') format('woff2');
-  }
+  /* 声部权威源 = ThemeVault #006 ember 登记（fontStyle: display-mono, fonts: Space Grotesk + IBM Plex Mono）。
+     ember 的等宽 display 为英文界面设计、栈内无中文等宽；中文站落地取该登记的拉丁名 Space Grotesk 配思源黑 900。
+     拉丁字体全部自托管：Google Fonts 在大陆不可靠，display 挂了就没有品牌字。 */
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url('space-grotesk-latin-var.woff2') format('woff2'); }
+  @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap;
+    src: url('ibm-plex-mono-400-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 600; font-display: swap;
+    src: url('ibm-plex-mono-600-latin.woff2') format('woff2'); }
   :root {
     /* 色板 = ThemeVault #001 erge/dark（浅版见 [data-theme="light"] = #002 erge/light）
        角色映射：--bg-primary=bg  --bg-secondary=bg-surface  --bg-card=bg-surface-2（页面需三级层次）
@@ -102,10 +101,11 @@
     --star-rgb: 255, 214, 165;
     --star-alpha: 1;
     --transition: cubic-bezier(0.16, 1, 0.3, 1);
-    --font-display: 'DM Serif Display', 'LXGW WenKai', 'Songti SC', SimSun, serif;
+    --font-display: 'Space Grotesk', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'PingFang SC', 'Microsoft YaHei', monospace;
     /* Radii scale (Shape Consistency Lock): tag 8 / btn 12 / article 14 / card 16 / product 20 / avatar 24 / pill 999 */
-    /* Display weight lock（与 aivault-site 同规）：混排拉丁的 display 元素（hero/nav/footer 品牌、stat-num）锁 400，
-       避免 DM Serif Display（仅 400 原生）与文楷被浏览器合成假粗体；纯中文 display 用文楷 Bold 700。 */
+    /* Display weight: Space Grotesk 实有字重 300-700, 请求 900 时拉丁取 700 (不合成假粗), 中文取 Noto Sans SC 900。
+       层级 hero/section-title 900, nav/footer 品牌与卡片标题 700。中文负字距会挤, 统一收在 -0.02em 以内。 */
   }
 
   /* ThemeVault #002 erge/light —— 暖纸面 + 品牌橙；文字用强调色一律降到 accent-deep 才过 AA */
@@ -183,9 +183,9 @@
   .nav-brand {
     font-family: var(--font-display);
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--accent-text);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
   .nav-right {
     display: flex;
@@ -266,8 +266,8 @@
   .section-title {
     font-family: var(--font-display);
     font-size: 48px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 900;
+    letter-spacing: -0.01em;
     margin-bottom: 16px;
     color: var(--accent-text);
   }
@@ -330,8 +330,8 @@
   .hero-brand {
     font-family: var(--font-display);
     font-size: clamp(46px, 8.5vw, 108px);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 900;
+    letter-spacing: -0.02em;
     line-height: 1.05;
     margin-bottom: 24px;
     background: var(--gradient-warm);
@@ -549,7 +549,7 @@
   .stat-num {
     font-family: var(--font-display);
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--accent-text);
     line-height: 1.2;
   }
@@ -603,6 +603,7 @@
     background: var(--bg-secondary);
   }
   .card-title {
+    font-family: var(--font-display);
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 12px;
@@ -629,8 +630,7 @@
     font-family: var(--font-display);
     font-size: 15px;
     font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--accent-text);
     margin: 48px 0 20px;
   }
@@ -696,7 +696,7 @@
     transform: translateX(8px);
   }
   .article-date {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 13px;
     color: var(--accent-text);
     text-align: center;
@@ -770,7 +770,7 @@
     color: var(--text-primary);
   }
   .vault-count {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 13px;
     color: var(--accent-text);
     margin-bottom: 12px;
@@ -972,7 +972,7 @@
   .footer-brand h3 {
     font-family: var(--font-display);
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 700;
     margin-bottom: 12px;
     background: var(--gradient-warm);
     -webkit-background-clip: text;
@@ -1530,7 +1530,7 @@
   })();
 </script>
 
-<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。Step 8 字体系统对齐 aivault-site：用户判定宋体方案平庸、文楷搭配满意，display 中文从 Noto Serif SC 换为 LXGW WenKai 霞鹜文楷（--font-display 与 aivault-site 同栈），section-title 900→700（文楷 Bold 上限）；Noto Serif SC 移出加载。工程配套：DM Serif Display 改本地自托管 woff2（24KB，与 aivault-site 同文件，OFL），文楷切片 CSS 内置仓库、woff2 走 npmmirror（国内可达，实测较 jsdelivr 快 10 倍），Google Fonts 仅余 JetBrains Mono 与 Noto Sans SC；body 栈补 PingFang SC/Microsoft YaHei。Step 9 关于我数据卡改项目入口卡（复用 stat-chip 样式）：原 2607/878+/7 三张数字卡因数字过小构成逆向社会证明、且"878+ 桌面软件下载"与 ErgeMD 实际下载（GitHub API 511）失真，改为 AI Vault / 写意 Xieyi / ErgeMD 三张轻摘要入口卡（名称 + 一句话 + 外链）；宝库区"2607 位读者"同步模糊为"2600+ 位读者"；手写数字口径登记至本仓库 AGENTS.md 反直觉约定第 4 条。Step 10 双主题：色板接入 ThemeVault #001 erge/dark 与 #002 erge/light（原琥珀 #FFB347 系换为品牌橙红系），:root 存深色令牌 + [data-theme="light"] 覆盖，新增 --accent-text / --accent-strong-text / --accent-foreground 三档分离「品牌填充色」与「可读写在底上的强调色」（品牌橙在白纸上仅 2.55:1，做小字必挂）；星场取色、header scrim、星云、阴影全部 token 化（header 滚动态原为 JS 内联硬写深色，改 is-solid 类切换）；主题切换按钮在页头，localStorage 持久化 + head 内联脚本首帧定主题防闪，未手动选过则跟随系统并监听变化；stat-label/month/contact-label 从 text-dim 升到 text-muted 档以过 AA。 -->
+<!-- 文件演化记录（定稿 · 区块星云）：保留 variant 1 的占位尺寸标注、诚实占位、移动端导航、Hero 深空视差；在 #about / #contact 叠加暖色径向星云层（::before）作为深空主表达。Step 3 改动（design-taste-frontend）：① title/description em-dash 改连字符、去中点；② 新增 OG/Twitter/Person-JSON-LD/canonical SEO 标签；③ section-title 渐变文字改实色琥珀（hero/footer 品牌渐变保留）；④ 清理悬空 token（--gradient-bg/--bg-card-hover）、统一圆角文档；⑤ Header 滚动监听改 IntersectionObserver（满足 5.D）；⑥ 移除 .variant-chip 与全页星海带 #pageStars（A/B 冗余收敛为区块星云）。Step 7 字体系统重构：display 从 Space Grotesk + Noto Serif SC（衬线/无衬线骨架错配）统一为 DM Serif Display + Noto Serif SC（同属衬线骨架），混排拉丁的 display 元素降 400 原生字面防 synthetic bold，纯中文 display（section-title/works-group）保持重字；Space Grotesk 移出加载，Noto Serif SC 增补 400。Step 8 字体系统对齐 aivault-site：用户判定宋体方案平庸、文楷搭配满意，display 中文从 Noto Serif SC 换为 LXGW WenKai 霞鹜文楷（--font-display 与 aivault-site 同栈），section-title 900→700（文楷 Bold 上限）；Noto Serif SC 移出加载。工程配套：DM Serif Display 改本地自托管 woff2（24KB，与 aivault-site 同文件，OFL），文楷切片 CSS 内置仓库、woff2 走 npmmirror（国内可达，实测较 jsdelivr 快 10 倍），Google Fonts 仅余 JetBrains Mono 与 Noto Sans SC；body 栈补 PingFang SC/Microsoft YaHei。Step 9 关于我数据卡改项目入口卡（复用 stat-chip 样式）：原 2607/878+/7 三张数字卡因数字过小构成逆向社会证明、且"878+ 桌面软件下载"与 ErgeMD 实际下载（GitHub API 511）失真，改为 AI Vault / 写意 Xieyi / ErgeMD 三张轻摘要入口卡（名称 + 一句话 + 外链）；宝库区"2607 位读者"同步模糊为"2600+ 位读者"；手写数字口径登记至本仓库 AGENTS.md 反直觉约定第 4 条。Step 10 双主题：色板接入 ThemeVault #001 erge/dark 与 #002 erge/light（原琥珀 #FFB347 系换为品牌橙红系），:root 存深色令牌 + [data-theme="light"] 覆盖，新增 --accent-text / --accent-strong-text / --accent-foreground 三档分离「品牌填充色」与「可读写在底上的强调色」（品牌橙在白纸上仅 2.55:1，做小字必挂）；星场取色、header scrim、星云、阴影全部 token 化（header 滚动态原为 JS 内联硬写深色，改 is-solid 类切换）；主题切换按钮在页头，localStorage 持久化 + head 内联脚本首帧定主题防闪，未手动选过则跟随系统并监听变化；stat-label/month/contact-label 从 text-dim 升到 text-muted 档以过 AA。 Step 11 字体声部归位：查 ThemeVault 发现 erge(#001/#002) 只登记颜色、无字体令牌，而全库 152 套中仅 7 套登记字体，其父系 ember(#006) 登记的是 fontStyle=display-mono / fonts=[Space Grotesk, IBM Plex Mono] / radius-none——本站此前的 DM Serif Display + 霞鹜文楷 是从 aivault-site 抄来的文学腔，与品牌登记的终端暖色声部不符（用户判不满意后选定 ember 声部）。落地：display = Space Grotesk（拉丁，自托管可变 woff2 300-700）+ Noto Sans SC 900（中文），等宽位 JetBrains Mono → IBM Plex Mono（自托管 400/600），Google Fonts 仅余 Noto Sans SC；删除 DM Serif woff2 与两份文楷切片 CSS（-246KB）；字重锁随之改写（不再需要锁 400），section-title 900、卡片标题升 display 声部、works-group 去掉对中文无效的 uppercase 并把 .14em 字距收到 .06em、中文负字距统一不超过 -.02em。圆角维持现状（ember 的 radius-none 未采纳，用户决定）。 -->
 <script>
   (function () {
     var KEY = 'ergeaia-theme';
